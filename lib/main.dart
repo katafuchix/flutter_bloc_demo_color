@@ -126,10 +126,17 @@ class _ColorScreenState extends State<ColorScreen> {
         children: [
           BlocBuilder<ColorBloc, ColorState>(
             builder: (context, state) {
+              if (state is ColorUpdateState ) {
+                return Container(
+                    width: 200,
+                    height: 200,
+                    color: state.initialState == true ? Colors.blue : Colors.red
+                );
+              }
               return Container(
                 width: 200,
                 height: 200,
-                color: state is ColorUpdateState && state.initialState == true ? Colors.blue : Colors.red
+                color: Colors.blue
               );
             },
           ),
